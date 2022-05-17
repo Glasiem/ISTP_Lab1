@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="en" class="h-100" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:insert="blocks/head">
+</head>
+
+
+<body class="h-100 text-white bg-dark">
+
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+    <header class="mb-15" th:insert="blocks/header">
+    </header>
+
+    <main class="px-3">
+
+        <div class="form-container">
+            <div class="categories p-3">
+                <h3>Ви впевнені що хочете видалити вітюбера і все, що з ним пов'язано?</h3>
+            </div>
+
+            <div style="display: flex; flex-direction: row">
+                <h3 style="color: #bfbfbf" class="ml-3">Ім'я:</h3>
+                <h3 class="ml-2" th:text="${name}"></h3>
+            </div>
+            <div style="display: flex; flex-direction: row">
+                <h3 style="color: #bfbfbf" class="ml-3">Інформація:</h3>
+                <h3 class="ml-2" th:text="${info}"></h3>
+            </div>
+            <div style="display: flex; flex-direction: row">
+                <h3 style="color: #bfbfbf" class="ml-3">Покоління:</h3>
+                <h3 class="ml-2" th:text="${generation.name}"></h3>
+            </div>
+            <div style="display: flex; flex-direction: row">
+                <h3 style="color: #bfbfbf" class="ml-3">Агенство:</h3>
+                <h3 class="ml-2" th:text="${generation.agency.name}"></h3>
+            </div>
+
+            <form style="padding: 2%" action="/vtuber/delete" method="post">
+                <input type="text" name="id" th:value="${id}" style="display: none">
+                <button type="submit" class="btn btn-primary">Видалити вітюбера</button>
+            </form>
+
+            <a href="/vtuber">Повернутися до вітюберів</a>
+
+        </div>
+
+    </main>
+
+    <footer class="mt-auto text-white-50">
+
+    </footer>
+</div>
+
+</body>
+
+</html>
