@@ -1,0 +1,54 @@
+<header class="mb-15" th:fragment="header" xmlns:th="http://www.w3.org/1999/xhtml"
+        xmlns:sec="http://www.w3.org/1999/xhtml">
+
+    <script>
+        $( document ).ready(function() {
+            $("#upload-agency").click(function() {
+                $(this).closest("form").attr("action", "/upload/agency");
+            });
+             $("#upload-generation").click(function() {
+                 $(this).closest("form").attr("action", "/upload/generation");
+             });
+             $("#upload-vtuber").click(function() {
+                 $(this).closest("form").attr("action", "/upload/vtuber");
+             });
+             $("#upload-manager").click(function() {
+                 $(this).closest("form").attr("action", "/upload/manager");
+             });
+             $("#upload-media").click(function() {
+                 $(this).closest("form").attr("action", "/upload/media");
+             });
+        });
+    </script>
+
+    <div>
+        <nav class="nav nav-masthead justify-content-left float-md-end row">
+
+            <div class="left-block col-6">
+
+                <a class="nav-link active" aria-current="page" href="/agency">Агенства</a>
+                <a class="nav-link" href="/generation">Покоління</a>
+                <a class="nav-link" href="/vtuber">Вітюбери</a>
+                <a class="nav-link" href="/media">Медіа</a>
+                <a class="nav-link" href="/manager">CEO</a>
+
+            </div>
+
+            <div class="right-block col-6">
+                <a sec:authorize="!isAuthenticated()" class="nav-link" href="/login">Авторизація</a>
+                <a sec:authorize="!isAuthenticated()" class="nav-link" href="/registration">Реєстрація</a>
+                <a sec:authorize="isAuthenticated()" class="nav-link" href="/logout">Вийти</a>
+                <div class="dropdown">
+                    <a sec:authorize="hasRole('ADMIN')" class="nav-link" href="#">Експорт БД</a>
+                    <div class="dropdown-content">
+                        <a href="/export/agency">Агенства</a>
+                        <a href="/export/generation">Покоління</a>
+                        <a href="/export/vtuber">Вітюбери</a>
+                        <a href="/export/media">Медіа</a>
+                        <a href="/export/manager">CEO</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
